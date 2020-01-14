@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.wrapper {
+    min-height: 100;
+    overflow: hidden;
+}
+.container {
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-container {
+    padding: 4rem 3rem;
+    background-color: #703faf;
+    border-radius: 10px;
+    width: 40rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.color-input {
+    width: 20rem;
+    padding: .5em;
+    border: none;
+    border-radius: 3px;
+}
+.buttons {
+    margin-left: .5rem;
+}
+
+.btn {
+    padding: 0.64em;
+    font-size: 12px;
+    border: none;
+    width: 8em;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn-generate {
+    background-color: lightgreen;
+    
+}
+.btn-generate:hover {
+    background-color: rgb(104, 211, 104);
+    
+}
+.btn-stop {
+    background-color: rgb(248, 66, 66);
+}
+
+.btn-stop:hover {
+    background-color: rgb(204, 41, 41);
+}
+
+.paragraph {
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.italic {
+    font-style: italic;
+}
+.hexa-colors__container {
+    padding: 2rem 4rem;
+    
+}
+
+.hexa-colors__wrapper {
+    padding: 0 4rem;
+}
+.hexa {
+    padding: 1rem 4rem;
+    width: 40rem;
+    display: flex; 
+    justify-content: space-between;
+    border-radius: 3px;
+    align-items: center;
+
+}
+
+.hexa-text {
+    font-size: 16px;
+}
+
+.copy-btn {
+    background-color: rgb(235, 229, 229);
+    border: none;
+    border-radius: 5px;
+    width: 4rem;
+    height: 2rem;
+    font-size: 10px;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background-color: rgb(184, 170, 170);
+
+
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        padding: 0;
+    }
+
+    .search-container {
+        padding: 2rem 1rem;
+        width: 24rem;
+    }
+
+    .search-wrapper {
+        flex-direction: column;
+        align-content: center;
+
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .btn-generate {
+        margin-right: .5rem;
+    }
+
+    .hexa {
+        width: 28rem;
+    }
+
+}
