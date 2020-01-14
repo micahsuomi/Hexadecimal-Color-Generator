@@ -13,62 +13,65 @@ const displayHexaColors = () => {
 
     }
     return `#${hexaColor}`
-}
+};
 
 //Display Colors when loading and refreshing the page
-for(let i = 0; i < 5; i++) {
-    let hexaCode = document.createElement('h1');
-    let hexaColorBox = document.createElement('div');
-    hexaColorBox.setAttribute('class','hexa');
-    hexaColorBox.setAttribute('id', 'hexa');
-    hexaCode.setAttribute('class', 'hexa-text');
-    hexaCode.setAttribute('id', 'hexa-code');
-    let copyButton = document.createElement('button');
-
-    let bgColor = displayHexaColors();
-    hexaCode.innerHTML = bgColor;
-    hexaColorBox.style.background = bgColor;
-    copyButton.setAttribute('class', 'copy-btn');
-    copyButton.textContent = 'Copy'; 
-
-    hexaColorBox.append(hexaCode);
-    hexaColorBox.append(copyButton);
-    container.append(hexaColorBox);
-
+const init = () => {
+    () => clearInterval(interval);
+    container.textContent = '';
+    for(let i = 0; i < 5; i++) {
+        let hexaCode = document.createElement('h1');
+        let hexaColorBox = document.createElement('div');
+        hexaColorBox.setAttribute('class','hexa');
+        hexaColorBox.setAttribute('id', 'hexa');
+        hexaCode.setAttribute('class', 'hexa-text');
+        hexaCode.setAttribute('id', 'hexa-code');
+        let copyButton = document.createElement('button');
     
-    stopBtn.addEventListener('click', () => clearInterval(interval));
-    copyButton.addEventListener('mouseover', () => clearInterval(interval));
+        let bgColor = displayHexaColors();
+        hexaCode.innerHTML = bgColor;
+        hexaColorBox.style.background = bgColor;
+        copyButton.setAttribute('class', 'copy-btn');
+        copyButton.textContent = 'Copy'; 
     
+        hexaColorBox.append(hexaCode);
+        hexaColorBox.append(copyButton);
+        container.append(hexaColorBox);
+    
+        
+        stopBtn.addEventListener('click', () => clearInterval(interval));
+        copyButton.addEventListener('mouseover', () => clearInterval(interval));
+        copyButton.addEventListener('mouseout',  () => {
+            init()
+        });
+
+        copyButton.addEventListener('click', copyColorValue = () => {
+            console.log(hexaCode.innerHTML);
+            let hexaValue = hexaCode.innerHTML;
+            let input = document.createElement('input');
+            input.value = hexaValue;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("copy");
+            input.remove();
+          
+        });
+    
+        
+        let interval = setInterval(() => {
+            let bgColor = displayHexaColors();
+            hexaCode.innerHTML = bgColor;
+            hexaColorBox.style.background = bgColor;
+        }, 2000);
+    }
    
+};
 
-    copyButton.addEventListener("click", copyColorValue = () => {
-        console.log(hexaCode.innerHTML);
-        let hexaValue = hexaCode.innerHTML;
-        let input = document.createElement('input');
-        input.value = hexaValue;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand("copy");
-        input.remove();
-      
-});
-
-
-let interval = setInterval(() => {
-    let bgColor = displayHexaColors();
-    hexaCode.innerHTML = bgColor;
-    hexaColorBox.style.background = bgColor;
-}, 2000);
-
-
-
-
-}
 
 //Button that generates color divs
 generateBtn.addEventListener('click', generateHexaColor = () => {
+    () => clearInterval(i);
     const p = document.querySelector('.paragraph');
-
 
     if(hexaInput.value == null || hexaInput.value < 5) {
         p.textContent = 'Please enter a number greater than 5';
@@ -110,7 +113,12 @@ generateBtn.addEventListener('click', generateHexaColor = () => {
         hexaColorBox.style.background = bgColor;
     }, 2000);
 
-    stopBtn.addEventListener('click', () => {clearInterval(i)});
+    stopBtn.addEventListener('click', () => clearInterval(i));
+    copyButton.addEventListener('mouseover', () => clearInterval(i));
+    copyButton.addEventListener('mouseout', () => {
+        generateHexaColor()
+        
+    })
 
     copyButton.addEventListener('click', copyColorValue = () => {
         console.log(hexaCode.innerHTML);
@@ -129,6 +137,8 @@ generateBtn.addEventListener('click', generateHexaColor = () => {
 
 
 });
+
+init();
 
 
 
