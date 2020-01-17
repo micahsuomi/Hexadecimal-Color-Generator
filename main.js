@@ -6,7 +6,7 @@ let modal = document.querySelector('.modal');
 let closeModalBtn = document.querySelector('.close-btn');
 
 
-//Function to Display Colors
+//Function to Display random hexa colors Colors
 const displayHexaColors = () => {
     let lettersNums = '0123456789abcdef';
     let hexaColor = '';
@@ -18,42 +18,33 @@ const displayHexaColors = () => {
     return `#${hexaColor}`
 };
 
-
 //Display Colors when loading and refreshing the page
-const init = () => {
+const init = (n=5) => {
     container.textContent = '';
-    for(let i = 0; i < 5; i++) {
+    for(let i = 0; i < n; i++) {
         createHexaDivs();
-        console.log('creating divs with init')
        
     }
    
 };
 
-
 //function that generates random hexa colors on button click
-
 const generateHexaColor = () => {
     () => clearInterval;
-    console.log('creating divs with generate')
     const p = document.querySelector('.paragraph');
-    const invalidInput = /[A-Za-z%$&#@!;'*^}{["$}<>]/g;
 
     if(hexaInput.value < 5) {
         p.textContent = 'Please enter a number greater than 5';
         p.style.color = 'red';
 
-    } else if (hexaInput.value.match(invalidInput)){
-        
+    } else if (!hexaInput.value.match(/^[0-9]*$/)){ 
         p.textContent = 'Please enter only digits, not letters or special characters';
         p.style.color = 'red';
 
     } else {
-
         container.textContent = '';
         p.textContent = 'Colors change people emotions so put meaningful colors in their life';
         p.style.color = 'white';
-
 
     for(let i = 0; i < hexaInput.value; i++) {
         createHexaDivs();
@@ -63,6 +54,7 @@ const generateHexaColor = () => {
 
 };
 
+//create divs calling the random hexa function
 const createHexaDivs = () => {
     let hexaCode = document.createElement('h1');
     let hexaColorBox = document.createElement('div');
@@ -82,18 +74,10 @@ const createHexaDivs = () => {
     hexaColorBox.append(copyBtn);
     container.append(hexaColorBox);
   
+    //stops and clears the interval
     stopBtn.addEventListener('click', () => clearInterval(interval));
-    // hexaColorBox.addEventListener('mouseover', () => clearInterval(interval));
-    // hexaColorBox.addEventListener('mouseout',  () => {
-    //     let interval = setInterval(() => {
-    //         console.log('changing colors')
-    //         let bgColor = displayHexaColors();
-    //         hexaCode.innerHTML = bgColor;
-    //         hexaColorBox.style.background = bgColor;
-    //     }, 2000);
-        
-    // });
-
+   
+    //copies the hexa color value
     copyBtn.addEventListener('click', copyColorValue = () => {
         console.log(hexaCode.innerHTML);
         let hexaValue = hexaCode.innerHTML;
@@ -105,17 +89,15 @@ const createHexaDivs = () => {
         input.remove();
         openModal();
 
-      
     });
 
+    //closes the modal popup
     closeModalBtn.addEventListener('click', closeModal = () => {
-        modal.style.display = 'none';
-       
-    })
+        modal.style.display = 'none';     
+});
 
 //time interval
     let interval = setInterval(() => {
-        console.log('changing colors')
         let bgColor = displayHexaColors();
         hexaCode.innerHTML = bgColor;
         hexaColorBox.style.background = bgColor;
@@ -129,16 +111,15 @@ generateBtn.addEventListener('click', () => {
 //the input calls the generate hexa when Enter key is pressed
 hexaInput.addEventListener('keypress', (e) => {
     if(e.keyCode === 13) {
-        // console.log(e.which)
         document.querySelector('.btn-generate').click();
     }
 });
 
+//opens the modal popup
 const openModal = () => {
     modal.style.display = 'block';
 
-}
-
+};
 
 //initializes the page
 init();

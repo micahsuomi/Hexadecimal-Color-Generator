@@ -5,7 +5,6 @@
 }
 
 
-
 body {
     font-family: 'Montserrat', sans-serif;
     
@@ -87,10 +86,18 @@ body {
     background-color: rgb(204, 41, 41);
 }
 
+
 .btn-generate:active, 
 .btn-stop:active {
     transform: scale(1.1);
     transition: all ease-in-out .5s;
+    
+}
+
+
+.btn-stop:link {
+    outline: rgb(248, 78, 66);
+
 }
 
 
@@ -283,4 +290,26 @@ body {
         
     }
 
+}
+
+@media screen and (max-width: 360px) {
+    .search-container {
+        padding: 2rem 0rem;
+        width: 22.4rem;
+    }
+    
+}
+
+@media screen and (max-width: 320px) {
+    .search-container {
+        padding: 2rem 0rem;
+        width: 20rem;
+    }
+
+    .title {
+        font-size: 23px;
+    }
+    .color-input {
+        width: 17rem;
+    }
 }
