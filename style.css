@@ -297,6 +297,10 @@ body {
         padding: 2rem 0rem;
         width: 22.4rem;
     }
+
+    .modal-content {
+        height: 37%;
+    }
     
 }
 
@@ -311,5 +315,9 @@ body {
     }
     .color-input {
         width: 17rem;
+    }
+
+    .modal-content {
+        height: 41%;
     }
 }
