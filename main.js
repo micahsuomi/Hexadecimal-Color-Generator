@@ -81,7 +81,7 @@ const createHexaDivs = () => {
     copyBtn.addEventListener('click', copyColorValue = () => {
         console.log(hexaCode.innerHTML);
         let hexaValue = hexaCode.innerHTML;
-        let input = document.createElement('input');
+        let input = document.createElement('textarea');
         input.value = hexaValue;
         document.body.appendChild(input);
         input.select();
